@@ -1,12 +1,5 @@
-
-/*view definition (get):
-v(X, Y) :- p_0(X, Y).
-p_0(X, Y) :- s1(X, Y).
-p_0(X, Y) :- s2(X, Y).
-*/
-
 CREATE OR REPLACE VIEW public.v AS 
-SELECT __dummy__.COL0 AS X, __dummy__.COL1 AS Y FROM (SELECT v_a2_0.COL0 AS COL0, v_a2_0.COL1 AS COL1 FROM (SELECT p_0_a2_0.COL0 AS COL0, p_0_a2_0.COL1 AS COL1 FROM (SELECT s1_a2_0.X AS COL0, s1_a2_0.Y AS COL1 FROM public.s1 AS s1_a2_0    UNION SELECT s2_a2_0.X AS COL0, s2_a2_0.Y AS COL1 FROM public.s2 AS s2_a2_0   ) AS p_0_a2_0   ) AS v_a2_0   ) AS __dummy__   ;
+SELECT __dummy__.COL0 AS X, __dummy__.COL1 AS Y FROM (SELECT v_a2_0.COL0 AS COL0, v_a2_0.COL1 AS COL1 FROM (SELECT s2_a2_0.X AS COL0, s2_a2_0.Y AS COL1 FROM public.s2 AS s2_a2_0    UNION SELECT s1_a2_0.X AS COL0, s1_a2_0.Y AS COL1 FROM public.s1 AS s1_a2_0   ) AS v_a2_0   ) AS __dummy__   ;
 
 CREATE EXTENSION IF NOT EXISTS plsh;
 
