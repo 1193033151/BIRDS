@@ -1,6 +1,6 @@
 S src
 S src/logic
-B bin
-B bin/logic
+B src
+B src/logic
 PKG postgresql
 PKG num
