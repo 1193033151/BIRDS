@@ -35,7 +35,7 @@ TOP_FILES=\
 	conn_ops\
 	rule_preprocess stratification derivation \
 	bottom_up evaluation\
-	ast2fol ast2sql ast2ros\
+	ast2fol ast2sql ast2js ast2ros\
 	ast2theorem \
 	bx\
 	debugger\

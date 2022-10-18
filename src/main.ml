@@ -390,10 +390,12 @@ let main () =
     if (!verification) then print_endline @@ "-- Program is validated --";
     let oc =if !outputf = "" then stdout else open_out !outputf  in
     if (not has_get) then fprintf oc "\n/*view definition (get):\n%s*/\n\n" view_rules_string;
-    let sql = Ast2sql.unfold_view_sql (!dbschema) (!log) ast2 in
+    (* let sql = Ast2sql.unfold_view_sql (!dbschema) (!log) ast2 in
     fprintf oc "%s\n" sql;
     let trigger_sql = Ast2sql.unfold_delta_trigger_stt (!dbschema) (!log) (!dejima_ud) shell_script (!dejima_user) (!inc) (!optimize) (constraint2rule ast2) in
-    fprintf oc "%s\n" trigger_sql;
+    fprintf oc "%s\n" trigger_sql; *)
+    let js = Ast2js.prog_to_javascript () in
+    fprintf oc "%s\n" js;
 
     if (!connectdb) then
       let c = new connection ~conninfo () in
@@ -402,7 +404,7 @@ let main () =
         flush stdout
       ) else ();
       c#set_notice_processor (fun s -> eprintf "postgresql error [%s]\n" s);
-    print_creating_sql c (sql^trigger_sql);
+    (* print_creating_sql c (sql^trigger_sql); *)
     close_out oc;
     c#finish)
 
